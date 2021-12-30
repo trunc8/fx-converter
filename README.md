@@ -26,7 +26,7 @@ make test
 - [Lambda Function](#lambda-function)
 
 
-#### Fetch data using web API
+### Fetch data using web API
 Ensure that `curl` library is installed in your system. We ultimately want to include the `curl.h` header file in our code. You can verify if it's available by checking if the directory `/usr/include/x86_64-linux-gnu/curl` is present. While compiling, add `-lcurl` at the end of the command:
 ```zsh
 g++ -Wall -o fx main.cpp utils.cpp -lcurl
@@ -65,7 +65,7 @@ double getFxRate(string curr1, string curr2) {
 ```
 
 
-#### Fetch data from file
+### Fetch data from file
 We have `currency_codes.txt` as a text file in the same directory.  
 Relevant snippets from the project code:
 ```cpp
@@ -88,7 +88,7 @@ void fetchValidCurrency(set<string> &valid_curr) {
 ```
 
 
-#### Parse json
+### Parse json
 We shall use [nlohmann's json library](https://github.com/nlohmann/json). Head to their [GitHub releases](https://github.com/nlohmann/json/releases). Scroll down to their latest assets. Download the `json.hpp` file to the `include` directory of your project.  
 Relevant snippets from the project code:
 ```cpp
@@ -111,7 +111,7 @@ double getFxRate(string curr1, string curr2) {
 ```
 
 
-#### Operator Overloading
+### Operator Overloading
 Relevant snippets from the project code:
 ```cpp
 ostream &operator<<(ostream &os, const set<string> &s) {
@@ -125,7 +125,7 @@ ostream &operator<<(ostream &os, const set<string> &s) {
 ```
 
 
-#### Function Template
+### Function Template
 Relevant snippets from the project code:
 ```cpp
 template<typename T>
@@ -139,7 +139,7 @@ void printSet(set<T> const &s) {
 ```
 
 
-#### Lambda Function
+### Lambda Function
 Relevant snippets from the project code:
 ```cpp
 int main(void) {
