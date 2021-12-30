@@ -5,10 +5,14 @@ Besides serving as a handy reference for myself, the motive is to present these 
 
 
 ### How to use?
-```zsh
+```sh
 git clone https://github.com/trunc8/fx-converter.git
 cd fx-converter
+# To run the project
 make test
+
+# To debug the project
+make debug
 ```
 
 
@@ -24,12 +28,16 @@ make test
 - [Operator Overloading](#operator-overloading)
 - [Function Template](#function-template)
 - [Lambda Function](#lambda-function)
+- [Debug](#debug)
 
 
 ### Fetch data using web API
-Ensure that `curl` library is installed in your system. We ultimately want to include the `curl.h` header file in our code. You can verify if it's available by checking if the directory `/usr/include/x86_64-linux-gnu/curl` is present. While compiling, add `-lcurl` at the end of the command:
-```zsh
-g++ -Wall -o fx main.cpp utils.cpp -lcurl
+Ensure that `curl` library is installed in your system. We ultimately want to include the `curl.h` header file in our code. You can verify if the header file is available by checking if the directory `/usr/include/x86_64-linux-gnu/curl` is present. While compiling, add `-lcurl` at the end of the command. 
+
+Relevant lines from `Makefile`:
+```make
+build: clean
+	g++ -Wall -o fx main.cpp utils.cpp -lcurl
 ```
 
 Relevant snippets from the project code:
@@ -160,6 +168,29 @@ int main(void) {
 }
 ```
 
+
+### Debug
+Ensure that `gdb` is installed in your system. We need to pass an additional flag (`-g`) while compiling in order to use gdb later. 
+
+Relevant lines from `Makefile`:
+```make
+debug: clean
+	g++ -Wall -g -o fx main.cpp utils.cpp -lcurl
+	gdb -tui fx
+```
+
+Useful gdb shortcuts:
+
+- q: quit
+- b: breakpoint (on line number)
+- r: run (program)
+- l: list (print source code till that point)
+- p: print (variable)
+- c: continue (until next breakpoint)
+- n: next (line in function)
+- s: step (next innermost instruction)
+- ENTER: repeat previous command
+- bt: backtrack (backtrace stack frames)
 
 
 ### Author(s)
