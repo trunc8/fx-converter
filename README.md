@@ -22,6 +22,7 @@ make debug
 
 
 ### Table of Contents
+- [Makefile](#makefile)
 - [Fetch data using web API](#fetch-data-using-web-api)
 - [Fetch data from file](#fetch-data-from-file)
 - [Parse json](#parse-json)
@@ -30,6 +31,26 @@ make debug
 - [Lambda Function](#lambda-function)
 - [Debug](#debug)
 
+
+### Makefile
+For a quick guide on `make` and `Makefile`, please refer to my [blog](https://trunc8.github.io/2021/04/03/tut-makefile). The `Makefile` in this project presents an easier example:
+```make
+build: clean
+  g++ -Wall -o fx main.cpp utils.cpp -lcurl
+
+clean:
+  rm -rf fx
+
+test: build
+  ./fx 
+```
+For some intuition of the above code, running `make test` on the terminal:
+
+- first runs `clean`, i.e., the command `rm -rf fx`
+- then runs `build`, i.e., the command `g++ -Wall -o fx main.cpp utils.cpp -lcurl`
+- finally runs `./fx`
+
+So in a single terminal command, we removed the stale output file, compiled the source code, and ran the executable.
 
 ### Fetch data using web API
 Ensure that `curl` library is installed in your system. We ultimately want to include the `curl.h` header file in our code. You can verify if the header file is available by checking if the directory `/usr/include/x86_64-linux-gnu/curl` is present. While compiling, add `-lcurl` at the end of the command. 
@@ -189,8 +210,13 @@ Useful gdb shortcuts:
 - c: continue (until next breakpoint)
 - n: next (line in function)
 - s: step (next innermost instruction)
+- fin: finish (continue until just after current function returns)
 - ENTER: repeat previous command
 - bt: backtrack (backtrace stack frames)
+
+
+### Acknowledgement
+- [gdb debugging](https://www.thegeekstuff.com/2010/03/debug-c-program-using-gdb/)
 
 
 ### Author(s)
