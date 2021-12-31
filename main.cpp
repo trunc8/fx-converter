@@ -33,10 +33,10 @@ int main(void) {
   curr1 = "USD";
   curr2 = "INR";
   
-  takeInputs(curr1, curr2);
+  takeInputsInUpper(curr1, curr2);
 
   // Using lambda expression
-  auto validateCurrency = [valid_curr](string curr) -> bool {
+  auto validateCurrency = [valid_curr](const string curr) -> bool {
     return valid_curr.find(curr) != valid_curr.end();
   };
 

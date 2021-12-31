@@ -16,7 +16,7 @@ using json = nlohmann::json;
 
 double getFxRate(string curr1, string curr2);
 
-void takeInputs(string &curr1, string &curr2);
+void takeInputsInUpper(string &curr1, string &curr2);
 
 void fetchValidCurrency(set<string> &valid_curr);
 

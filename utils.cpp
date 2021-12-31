@@ -28,11 +28,14 @@ double getFxRate(string curr1, string curr2) {
 }
 
 
-void takeInputs(string &curr1, string &curr2) {
+void takeInputsInUpper(string &curr1, string &curr2) {
   cout << "Please enter currency code 1: ";
   cin >> curr1;
+  transform(curr1.begin(), curr1.end(), curr1.begin(), ::toupper);
+
   cout << "Please enter currency code 2: ";
   cin >> curr2;
+  transform(curr2.begin(), curr2.end(), curr2.begin(), ::toupper);
 }
 
 
